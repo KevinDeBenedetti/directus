@@ -1,0 +1,26 @@
+services:
+    directus:
+        image: directus/directus:11.5.1
+        ports:
+            - 8055:8055
+        volumes:
+            - ./database:/directus/database
+            - ./uploads:/directus/uploads
+            - ./extensions:/directus/extensions
+        env_file: .env
+        environment:
+            SECRET: ${SECRET}
+            ADMIN_EMAIL: ${ADMIN_EMAIL}
+            ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+            # DB_CLIENT: ${DB_CLIENT}
+            # DB_FILENAME: ${DB_FILENAME}
+            WEBSOCKETS_ENABLED: ${WEBSOCKETS_ENABLED}
+
+            STORAGE_LOCATIONS: ${STORAGE_LOCATIONS}
+            STORAGE_SUPABASE_DRIVER: ${STORAGE_SUPABASE_DRIVER}
+            # STORAGE_SUPABASE_ROOT: ${}
+            # STORAGE_SUPABASE_HEALTHCHECK_THRESHOLD: ${}
+            STORAGE_SUPABASE_SERVICE_ROLE: ${STORAGE_SUPABASE_SERVICE_ROLE}
+            STORAGE_SUPABASE_BUCKET: ${STORAGE_SUPABASE_BUCKET}
+            STORAGE_SUPABASE_PROJECT_ID: ${STORAGE_SUPABASE_PROJECT_ID}
+            STORAGE_SUPABASE_ENDPOINT: ${STORAGE_SUPABASE_ENDPOINT}
